@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outubro Rosa - Kedu</title>
+    
+    <!-- Carregando Tailwind CSS e Fontes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Configuração do Tailwind para garantir a paleta estrita: Rosa, Azul e Branco -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        kedu: {
+                            pink: '#d62d7a',        /* Rosa principal da marca */
+                            pink_light: '#fdf2f8',  /* Subtom super claro de rosa para fundos */
+                            pink_mid: '#f472b6',    /* Subtom médio para detalhes */
+                            blue: '#4c73a3',        /* Azul principal da marca */
+                            blue_light: '#eff6ff',  /* Subtom super claro de azul para fundos */
+                            blue_dark: '#1e3a8a',   /* Azul escuro usado no lugar do preto/cinza para textos */
+                            white: '#ffffff'
+                        }
+                    },
+                    boxShadow: {
+                        'soft-pink': '0 10px 25px -5px rgba(214, 45, 122, 0.1), 0 8px 10px -6px rgba(214, 45, 122, 0.1)',
+                        'soft-blue': '0 10px 25px -5px rgba(76, 115, 163, 0.1), 0 8px 10px -6px rgba(76, 115, 163, 0.1)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Substituindo cinzas por azul escuro para manter a paleta estrita */
+        body {
+            color: #1e3a8a; 
+            background-color: #ffffff;
+        }
+        
+        .gradient-text-pink {
+            background: linear-gradient(135deg, #d62d7a, #9d174d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-bg-pink-blue {
+            background: linear-gradient(135deg, #fdf2f8 0%, #eff6ff 100%);
+        }
+
+        /* Máscara suave para a imagem da hero */
+        .hero-image-mask {
+            mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+        }
+
+        /* Animações suaves para os cards */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-kedu-pink selection:text-white">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo Azul Escuro (#1e2f52) a partir de PNG Branco -->
+                <a href="#" class="flex-shrink-0 flex items-center transform transition hover:scale-105">
+                    <img class="h-10 w-auto" src="Logo 4.png" alt="Kedu Logo" style="filter: brightness(0) saturate(100%) invert(15%) sepia(27%) saturate(2250%) hue-rotate(195deg) brightness(95%) contrast(93%);">
+                </a>
+                
+                <!-- Navegação Desktop -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#introducao" class="text-kedu-pink hover:text-kedu-blue font-medium text-sm tracking-wide transition-colors">Introdução</a>
+                    <a href="#fatores" class="text-kedu-pink hover:text-kedu-blue font-medium text-sm tracking-wide transition-colors">Fatores de Risco</a>
+                    <a href="#autoexame" class="text-kedu-pink hover:text-kedu-blue font-medium text-sm tracking-wide transition-colors">Autoexame</a>
+                    <a href="#sinais" class="text-kedu-pink hover:text-kedu-blue font-medium text-sm tracking-wide transition-colors">Sinais de Alerta</a>
+                    <a href="#prevencao" class="text-kedu-pink hover:text-kedu-blue font-medium text-sm tracking-wide transition-colors">Prevenção</a>
+                </nav>
+
+                <!-- Menu Mobile (Hamburguer simplificado) -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-kedu-pink p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative bg-kedu-pink_light pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden">
+        <!-- Elementos decorativos ao fundo -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-kedu-pink opacity-5 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-kedu-blue opacity-5 blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                
+                <!-- Textos da Hero -->
+                <div class="w-full lg:w-1/2 text-center lg:text-left">
+                    <span class="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-white text-kedu-pink font-semibold text-sm tracking-wider mb-6 shadow-sm uppercase border border-kedu-pink/20">
+                        <i class="fas fa-ribbon"></i> Outubro Rosa
+                    </span>
+                    
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-kedu-blue_dark mb-6 leading-tight">
+                        Prevenção é movimento: <br />
+                        <span class="text-kedu-blue relative inline-block mt-2">
+                            Confira a nossa programação!
+                            <!-- Sublinhado decorativo -->
+                            <svg class="absolute w-full h-3 -bottom-1 left-0 text-kedu-blue/20" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="8" fill="transparent"/>
+                            </svg>
+                        </span>
+                    </h1>
+                    
+                    <p class="mt-4 text-xl text-kedu-blue_dark/80 font-medium max-w-2xl mx-auto lg:mx-0">
+                        Cuidar de você é a nossa prioridade. Fique atenta às nossas ações e participe:
+                    </p>
+                </div>
+
+                <!-- Imagem da Mulher -->
+                <div class="w-full lg:w-1/2 relative flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <!-- Círculo de fundo para destacar a imagem -->
+                        <div class="absolute inset-0 bg-kedu-pink rounded-full opacity-10 transform scale-105 -translate-y-4"></div>
+                        
+                        <!-- SUBSTITUA 'mulher-header.jpg' PELO NOME EXATO DA SUA IMAGEM -->
+                        <img src="mulher-header.jpg" 
+                             alt="Mulher sorrindo, representando saúde e autocuidado" 
+                             class="rounded-3xl shadow-soft-pink object-cover h-[400px] w-full border-4 border-white z-10 relative"
+                             onerror="this.src='https://images.unsplash.com/photo-1590611936760-eeb9bcab58dc?q=80&w=2070&auto=format&fit=crop'"> 
+                             <!-- O 'onerror' acima mantém a imagem da internet caso você ainda não tenha colocado a sua na pasta -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="relative -mt-10 z-20 pb-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Evento 1 -->
+                <a href="https://login.teamguide.app/" target="_blank" class="block group">
+                    <div class="bg-white rounded-2xl p-6 shadow-lg border-t-4 border-kedu-blue hover-lift flex flex-col h-full relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-kedu-blue_light w-24 h-24 rounded-bl-full -z-10 transition-transform group-hover:scale-125"></div>
+                        
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-kedu-blue_dark text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Em Breve</span>
+                            <i class="fas fa-video text-kedu-blue text-2xl group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-kedu-blue_dark mb-3 group-hover:text-kedu-blue transition-colors">Palestra Exclusiva com o ICC</h3>
+                        <p class="text-sm text-kedu-blue_dark/80 mb-2"><strong>Tema:</strong> Prevenção e Diagnóstico Precoce na Mulher Jovem</p>
+                        <p class="text-sm font-semibold text-kedu-pink mt-auto flex items-center gap-2">
+                            <i class="fas fa-link"></i> Transmissão Online (Clique para acessar)
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Evento 2 -->
+                <a href="https://login.teamguide.app/" target="_blank" class="block group">
+                    <div class="bg-white rounded-2xl p-6 shadow-lg border-t-4 border-kedu-pink hover-lift flex flex-col h-full relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-kedu-pink_light w-24 h-24 rounded-bl-full -z-10 transition-transform group-hover:scale-125"></div>
+
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-kedu-pink text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Em breve</span>
+                            <i class="fas fa-gift text-kedu-pink text-2xl group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-kedu-blue_dark mb-3 group-hover:text-kedu-pink transition-colors">Oficina Surpresa</h3>
+                        <p class="text-sm text-kedu-blue_dark/80 mb-4">Vagas limitadas! Inscreva-se pelo TeamGuide em breve.</p>
+                        <p class="text-sm font-semibold text-kedu-blue mt-auto flex items-center gap-2">
+                            <i class="fas fa-external-link-alt"></i> Clique para se inscrever
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="introducao" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-kedu-blue_dark mb-6">
+                Câncer de mama na juventude:<br/> 
+                <span class="text-kedu-pink">O que você de fato precisa saber?</span>
+            </h2>
+            <div class="w-24 h-1.5 bg-kedu-blue mx-auto mb-8 rounded-full"></div>
+            
+            <p class="text-lg text-kedu-blue_dark/80 mb-6 leading-relaxed font-medium">
+                Você sabia que, embora seja mais comum após os 50 anos, cerca de <span class="font-bold text-kedu-pink bg-kedu-pink_light px-2 py-1 rounded">10% a 15%</span> dos casos de câncer de mama diagnosticados no Brasil ocorrem em <span class="font-bold text-kedu-blue_dark border-b-2 border-kedu-blue">mulheres abaixo dos 40 anos</span>?
+            </p>
+            
+            <div class="bg-kedu-blue_light p-8 rounded-2xl border border-kedu-blue/10 shadow-soft-blue transform hover:-translate-y-1 transition-transform">
+                <i class="fas fa-quote-left text-3xl text-kedu-blue/20 absolute top-4 left-4"></i>
+                <p class="text-lg text-kedu-blue_dark font-medium leading-relaxed relative z-10">
+                    Na rotina corrida entre trabalho, estudos e vida pessoal, o autocuidado não pode ficar para depois. A informação correta é a sua melhor ferramenta de proteção!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="fatores" class="py-24 bg-kedu-pink_light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-kedu-blue_dark mb-4">O que aumenta os riscos?</h2>
+                <p class="text-lg text-kedu-blue_dark/70 max-w-2xl mx-auto font-medium">
+                    Nem tudo está sob nosso controle (como a genética), mas a maioria dos fatores ambientais <strong class="text-kedu-pink text-xl">SIM!</strong>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-soft-pink border border-white hover:border-kedu-pink/30 transition-colors text-center">
+                    <div class="w-20 h-20 bg-kedu-pink_light rounded-full flex items-center justify-center mx-auto mb-6 text-4xl text-kedu-pink shadow-inner">
+                        🧬
+                    </div>
+                    <h3 class="text-xl font-bold text-kedu-blue_dark mb-3">Genética e Histórico Familiar</h3>
+                    <p class="text-kedu-blue_dark/70 text-sm leading-relaxed">Ter parentes de primeiro grau (mãe, irmã ou filha) com histórico exige atenção dobrada e acompanhamento médico mais cedo.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-soft-pink border border-white hover:border-kedu-pink/30 transition-colors text-center">
+                    <div class="w-20 h-20 bg-kedu-pink_light rounded-full flex items-center justify-center mx-auto mb-6 text-4xl text-kedu-pink shadow-inner">
+                        🍷
+                    </div>
+                    <h3 class="text-xl font-bold text-kedu-blue_dark mb-3">Estilo de Vida</h3>
+                    <p class="text-kedu-blue_dark/70 text-sm leading-relaxed">O consumo frequente de álcool, o tabagismo e o sedentarismo são fatores de risco relevantes e que podem ser modificados.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-soft-pink border border-white hover:border-kedu-pink/30 transition-colors text-center">
+                    <div class="w-20 h-20 bg-kedu-pink_light rounded-full flex items-center justify-center mx-auto mb-6 text-4xl text-kedu-pink shadow-inner">
+                        ⚖️
+                    </div>
+                    <h3 class="text-xl font-bold text-kedu-blue_dark mb-3">Fatores Hormonais</h3>
+                    <p class="text-kedu-blue_dark/70 text-sm leading-relaxed">Uso prolongado de contraceptivos hormonais sem acompanhamento ou reposições sem orientação médica adequada.</p>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-kedu-blue text-white rounded-3xl p-8 md:p-10 max-w-4xl mx-auto shadow-xl relative overflow-hidden">
+                <!-- Decorative background elements -->
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl"></div>
+                <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-kedu-pink opacity-20 rounded-full blur-2xl"></div>
+                
+                <div class="relative z-10 flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
+                    <div class="flex-shrink-0 text-6xl text-white bg-white/20 w-24 h-24 flex items-center justify-center rounded-2xl backdrop-blur-sm border border-white/30">
+                        🤔
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-bold mb-3">Mito x Verdade</h4>
+                        <p class="text-lg font-medium text-blue-50 mb-2">Pancada ou trauma na mama causa câncer?</p>
+                        <div class="inline-block bg-kedu-pink text-white font-bold px-4 py-1.5 rounded-full text-sm uppercase tracking-wide mb-2 shadow-md">
+                            Mito!
+                        </div>
+                        <p class="text-white/90">Traumas físicos não provocam o aparecimento de tumores.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="autoexame" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-kedu-blue_dark mb-6">
+                    Conhecer o próprio corpo é o primeiro passo
+                </h2>
+                <p class="text-lg text-kedu-blue_dark/80 font-medium">
+                    O autoexame <strong class="text-kedu-pink bg-kedu-pink_light px-2 py-0.5 rounded">não substitui</strong> a consulta médica ou exames de imagem, mas é fundamental para você perceber qualquer mudança suspeita nas mamas.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 relative">
+                <!-- Linha conectora (visível apenas desktop) -->
+                <div class="hidden lg:block absolute top-24 left-1/6 right-1/6 h-1 bg-kedu-blue_light -z-10 rounded-full" style="width: 66%; margin-left: 17%;"></div>
+
+                <!-- Passo 1 -->
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 bg-white border-4 border-kedu-blue rounded-full flex items-center justify-center text-2xl font-bold text-kedu-blue shadow-lg mb-6 z-10 bg-clip-padding relative">
+                        1
+                    </div>
+                    <div class="bg-kedu-blue_light w-full p-8 rounded-3xl text-center h-full hover-lift border border-transparent hover:border-kedu-blue/20">
+                        <div class="text-4xl text-kedu-blue mb-4"><i class="fas fa-user-circle"></i></div>
+                        <h3 class="text-xl font-bold text-kedu-blue_dark mb-3">No Espelho (Observar)</h3>
+                        <p class="text-kedu-blue_dark/70 text-sm leading-relaxed">Com os braços abaixados e depois levantados, observe o contorno, o volume, a cor da pele e dos mamilos.</p>
+                    </div>
+                </div>
+
+                <!-- Passo 2 -->
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 bg-white border-4 border-kedu-pink rounded-full flex items-center justify-center text-2xl font-bold text-kedu-pink shadow-lg mb-6 z-10 bg-clip-padding relative">
+                        2
+                    </div>
+                    <div class="bg-kedu-pink_light w-full p-8 rounded-3xl text-center h-full hover-lift border border-transparent hover:border-kedu-pink/20">
+                         <div class="text-4xl text-kedu-pink mb-4"><i class="fas fa-shower"></i></div>
+                        <h3 class="text-xl font-bold text-kedu-blue_dark mb-3">No Banho (Apalpar)</h3>
+                        <p class="text-kedu-blue_dark/70 text-sm leading-relaxed">Com a pele ensaboada, levante o braço esquerdo e, com a mão direita, faça movimentos circulares suavemente por toda a mama e axila. Repita no outro lado.</p>
+                    </div>
+                </div>
+
+                <!-- Passo 3 -->
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 bg-white border-4 border-kedu-blue rounded-full flex items-center justify-center text-2xl font-bold text-kedu-blue shadow-lg mb-6 z-10 bg-clip-padding relative">
+                        3
+                    </div>
+                    <div class="bg-kedu-blue_light w-full p-8 rounded-3xl text-center h-full hover-lift border border-transparent hover:border-kedu-blue/20">
+                         <div class="text-4xl text-kedu-blue mb-4"><i class="fas fa-bed"></i></div>
+                        <h3 class="text-xl font-bold text-kedu-blue_dark mb-3">Deitada (Confirmar)</h3>
+                        <p class="text-kedu-blue_dark/70 text-sm leading-relaxed">Coloque um travesseiro sob o ombro e apalpe novamente para sentir tecidos mais profundos com maior precisão.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sinais" class="py-24 bg-kedu-blue relative overflow-hidden">
+        <!-- Padrão de fundo dinâmico -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 2px, transparent 2px); background-size: 30px 30px;"></div>
+        
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-white rounded-[2.5rem] p-8 md:p-14 shadow-2xl relative">
+                <!-- Ícone de Alerta Flutuante -->
+                <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-kedu-pink w-20 h-20 rounded-full flex items-center justify-center shadow-lg border-4 border-white">
+                    <i class="fas fa-exclamation text-4xl text-white"></i>
+                </div>
+
+                <div class="mt-8 text-center mb-10">
+                    <h2 class="text-3xl md:text-4xl font-bold text-kedu-pink mb-4">
+                        Fique atenta se notar:
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                    <div class="flex items-start p-4 bg-kedu-pink_light rounded-2xl border border-kedu-pink/10">
+                        <i class="fas fa-circle text-kedu-pink text-[10px] mt-2.5 mr-4"></i>
+                        <span class="text-kedu-blue_dark font-medium text-lg">Nódulo (caroço) fixo, endurecido e geralmente indolor no peito ou na axila.</span>
+                    </div>
+                    <div class="flex items-start p-4 bg-kedu-pink_light rounded-2xl border border-kedu-pink/10">
+                        <i class="fas fa-circle text-kedu-pink text-[10px] mt-2.5 mr-4"></i>
+                        <span class="text-kedu-blue_dark font-medium text-lg">Alterações no mamilo (como saída espontânea de líquido ou inversão do bico).</span>
+                    </div>
+                    <div class="flex items-start p-4 bg-kedu-pink_light rounded-2xl border border-kedu-pink/10">
+                        <i class="fas fa-circle text-kedu-pink text-[10px] mt-2.5 mr-4"></i>
+                        <span class="text-kedu-blue_dark font-medium text-lg">Pele da mama avermelhada, repuxada ou com aspecto de "casca de laranja".</span>
+                    </div>
+                    <div class="flex items-start p-4 bg-kedu-pink_light rounded-2xl border border-kedu-pink/10">
+                        <i class="fas fa-circle text-kedu-pink text-[10px] mt-2.5 mr-4"></i>
+                        <span class="text-kedu-blue_dark font-medium text-lg">Inchaço ou dor persistente em uma das mamas.</span>
+                    </div>
+                </div>
+
+                <div class="bg-kedu-blue/5 border-l-4 border-kedu-blue rounded-r-2xl p-6 text-center md:text-left flex flex-col md:flex-row items-center gap-6">
+                    <i class="fas fa-info-circle text-4xl text-kedu-blue"></i>
+                    <p class="text-lg text-kedu-blue_dark font-medium">
+                        <span class="font-bold text-kedu-blue">Notou algo diferente? Não entre em pânico!</span> A maioria dos nódulos na juventude são benignos (como fibroadenomas), mas passar por avaliação médica é <strong class="text-kedu-pink">indispensável</strong>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="prevencao" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-kedu-blue_dark mb-4">Hábitos que salvam vidas</h2>
+                <p class="text-lg text-kedu-blue_dark/70 max-w-3xl mx-auto font-medium">
+                    (Proteção que funciona) Segundo dados do ICC e da OMS, até <strong class="text-kedu-pink text-2xl mx-1">30%</strong> dos casos de câncer de mama podem ser evitados com hábitos de vida saudáveis:
+                </p>
+            </div>
+
+            <div class="flex flex-col space-y-6 max-w-4xl mx-auto">
+                <!-- Hábito 1 -->
+                <div class="bg-white rounded-2xl p-6 md:p-8 border border-kedu-blue_light shadow-soft-blue flex flex-col md:flex-row gap-6 items-center hover-lift">
+                    <div class="bg-kedu-blue rounded-full w-16 h-16 flex-shrink-0 flex items-center justify-center text-white shadow-md">
+                        <i class="fas fa-running text-2xl"></i>
+                    </div>
+                    <div class="text-center md:text-left flex-1">
+                        <h3 class="text-xl font-bold text-kedu-blue_dark mb-2 flex items-center justify-center md:justify-start gap-2">
+                            <i class="fas fa-check text-kedu-pink text-sm"></i> Movimente-se
+                        </h3>
+                        <p class="text-kedu-blue_dark/80 font-medium">Pelo menos 150 minutos de atividade física moderada por semana.</p>
+                    </div>
+                </div>
+
+                <!-- Hábito 2 -->
+                <div class="bg-white rounded-2xl p-6 md:p-8 border border-kedu-blue_light shadow-soft-blue flex flex-col md:flex-row gap-6 items-center hover-lift">
+                    <div class="bg-kedu-pink rounded-full w-16 h-16 flex-shrink-0 flex items-center justify-center text-white shadow-md">
+                        <i class="fas fa-apple-alt text-2xl"></i>
+                    </div>
+                    <div class="text-center md:text-left flex-1">
+                        <h3 class="text-xl font-bold text-kedu-blue_dark mb-2 flex items-center justify-center md:justify-start gap-2">
+                            <i class="fas fa-check text-kedu-blue text-sm"></i> Alimente-se com cor
+                        </h3>
+                        <p class="text-kedu-blue_dark/80 font-medium">Reduza processados, açúcar e gorduras saturadas; aumente o consumo de vegetais e frutas.</p>
+                    </div>
+                </div>
+
+                <!-- Hábito 3 -->
+                <div class="bg-white rounded-2xl p-6 md:p-8 border border-kedu-blue_light shadow-soft-blue flex flex-col md:flex-row gap-6 items-center hover-lift">
+                    <div class="bg-kedu-blue_dark rounded-full w-16 h-16 flex-shrink-0 flex items-center justify-center text-white shadow-md">
+                        <i class="fas fa-stethoscope text-2xl"></i>
+                    </div>
+                    <div class="text-center md:text-left flex-1">
+                        <h3 class="text-xl font-bold text-kedu-blue_dark mb-2 flex items-center justify-center md:justify-start gap-2">
+                            <i class="fas fa-check text-kedu-pink text-sm"></i> Mantenha os exames em dia
+                        </h3>
+                        <p class="text-kedu-blue_dark/80 font-medium">Visite o ginecologista anualmente. A partir dos 40/50 anos, a mamografia é a regra, mas na faixa dos 20 aos 30 a ultrassonografia mamária pode ser solicitada pelo médico caso haja necessidade.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 gradient-bg-pink-blue">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-kedu-blue_dark mb-6 leading-tight">
+                Cuidar de você é um ato de amor.<br/> 
+                <span class="text-kedu-pink">Compartilhe essa ideia!</span>
+            </h2>
+            <p class="text-xl text-kedu-blue_dark/80 mb-10 font-medium max-w-2xl mx-auto">
+                A informação só é poderosa quando circula. Envie este conteúdo para suas colegas, amigas, mãe, irmãs e familiares.
+            </p>
+            
+            <button onclick="copyLink()" id="shareBtn" class="bg-white border-2 border-kedu-pink text-kedu-pink hover:bg-kedu-pink hover:text-white font-bold py-4 px-10 rounded-full shadow-lg transition-all duration-300 inline-flex items-center gap-3 text-lg group">
+                <i class="fas fa-share-nodes group-hover:scale-110 transition-transform"></i> 
+                <span>Compartilhar Página</span>
+            </button>
+            <p id="shareMsg" class="text-kedu-blue font-semibold mt-4 opacity-0 transition-opacity duration-300">Link copiado com sucesso!</p>
+        </div>
+    </section>
+
+    <section class="bg-kedu-blue py-20 relative overflow-hidden">
+        <!-- Elementos decorativos de fundo -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-white opacity-10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-64 h-64 bg-kedu-pink_light opacity-10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white italic mb-10 leading-tight">
+                "Duas cores, a mesma certeza:<br/>
+                <span class="text-kedu-pink_light">se cuidar vale a pena.</span>"
+            </h2>
+            
+            <div class="inline-flex flex-col sm:flex-row items-center justify-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 py-4 px-8 rounded-full shadow-soft-blue transition-transform hover:scale-105">
+                <i class="fas fa-ribbon text-3xl text-blue-300 drop-shadow-md"></i>
+                <span class="text-xl md:text-2xl font-bold text-white uppercase tracking-wider">Em breve, Novembro Azul</span>
+                <i class="fas fa-ribbon text-3xl text-blue-300 drop-shadow-md"></i>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t border-kedu-pink_light py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+            <!-- Logo no rodapé também em Azul Escuro (#1e2f52) -->
+            <img class="h-12 w-auto mb-6" src="Logo 4.png" alt="Kedu Logo" style="filter: brightness(0) saturate(100%) invert(15%) sepia(27%) saturate(2250%) hue-rotate(195deg) brightness(95%) contrast(93%);">
+            
+            <div class="flex gap-4 text-kedu-blue">
+                <a href="#" class="hover:text-kedu-pink transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
+                <a href="#" class="hover:text-kedu-pink transition-colors"><i class="fab fa-linkedin text-2xl"></i></a>
+            </div>
+
+            <p class="mt-12 text-sm text-kedu-blue_dark/50 font-medium text-center">
+                Campanha Outubro Rosa &copy; 2026 Kedu. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll mechanism para o menu de navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if(targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Função elegante de copiar link sem alert()
+        function copyLink() {
+            const tempInput = document.createElement('input');
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            const btn = document.getElementById('shareBtn');
+            const msg = document.getElementById('shareMsg');
+            
+            btn.innerHTML = '<i class="fas fa-check"></i> <span>Copiado!</span>';
+            btn.classList.add('bg-kedu-pink', 'text-white');
+            msg.classList.remove('opacity-0');
+
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-share-nodes group-hover:scale-110 transition-transform"></i> <span>Compartilhar Página</span>';
+                btn.classList.remove('bg-kedu-pink', 'text-white');
+                msg.classList.add('opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
